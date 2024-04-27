@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: SF;
+    user-select: none;
+}
+@font-face {
+    font-family: SF;
+    src: url(SFUIDisplay-Regular.woff2) ;
+    font-display: swap;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background: #0c0c0c;
+    height: 100vh;
+}
+.borders {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 280px;
+    height: 570px;
+    border: 2px solid #fff6be;
+    background: #000000;
+    border-radius: 30px;
+    box-shadow: 1px 7px 55px 0px rgba(255, 166, 0, 0.4);
+}
+.solid {
+    position: absolute;
+    top: -2px;
+    width: 101px;
+    background: #000;
+    height: 3px;
+    z-index: 2;
+}
+.rectangle {
+    top: -2px;
+    position: absolute;
+    width: 105px;
+    height: 30px;
+    border: 2px solid #fff6be;
+    border-radius: 0 0 15px 15px;
+}
+.display {
+    display: flex;
+    height: 90px;
+    width: 240px;
+    margin-top: 100px;
+    overflow: hidden;
+    font-size: 60px;
+    color: #fff;
+    background:#000000;
+    border: none;
+    cursor: default;
+    outline: none;
+    text-align: right;
+}
+.wrapper {
+    margin-top: 30px;
+}
+.wrapper__btn {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.btn {
+    width: 52px;
+    height: 52px;
+    border-radius: 100%;
+    border: none;
+    font-size: 24px;
+    background: #313131;
+    color: #fff;
+    margin: 0 5px 0 5px;
+}
+.operation {
+    background: #F69906;
+    font-weight: bold;
+}
+.reset, .pm, .prc{
+    background: #A0A0A0;
+    color: #000;
+    font-weight: bold;
+}
+.zero {
+    display: flex;
+    justify-content:start;
+    padding-top: 12px;
+    padding-left: 20px;
+    width: 114px;
+    height: 52px;
+    border-radius: 27px;
+}
+.equally {
+    background: #F69906;
+    font-weight: bold;
+}
+.line {
+    display: block;
+    width: 90px;
+    height: 3.7px;
+    background: #c9c9c9;    
+    border-radius: 10px;
+    margin-top: 25px;
+}
+.tagname {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: #3c3c3c;
+    font-size: 15px;
+}
+
+.number:active {
+    animation: number 0.2s linear;
+}
+@keyframes number {
+0% {
+    background: #313131;
+}
+50% {
+    background: #494949;
+}
+100% {
+    background: #313131;
+}
+}
+.reset:active {
+    animation: reset 0.2s linear;
+  }
+@keyframes reset {
+0% {
+    background: #A0A0A0;
+}
+50% {
+    background: #c3c3c3;
+}
+100% {
+    background: #A0A0A0;
+}
+}
+.operation:active {
+    animation: operation 0.2s linear;
+  }
+@keyframes operation {
+0% {
+    background: #F69906;
+}
+50% {
+    background: #ffffff;
+    color: #F69906;
+}
+100% {
+    background: #F69906;
+}
+}
+.equally:active {
+    animation: operation 0.2s linear;
+  }
+@keyframes equally {
+0% {
+    background: #F69906;
+}
+50% {
+    background: #ffffff;
+    color: #F69906;
+}
+100% {
+    background: #F69906;
+}
+}
+.pm:active {
+    animation: pm 0.2s linear;
+  }
+@keyframes pm {
+0% {
+    background: #A0A0A0;
+}
+50% {
+    background: #c3c3c3;
+}
+100% {
+    background: #A0A0A0;
+}
+}
+.prc:active {
+    animation: prc 0.2s linear;
+  }
+@keyframes prc {
+0% {
+    background: #A0A0A0;
+}
+50% {
+    background: #c3c3c3;
+}
+100% {
+    background: #A0A0A0;
+}
+}
+.zero:active {
+    animation: zero 0.2s linear;
+}
+@keyframes zero {
+0% {
+    background: #313131;
+}
+50% {
+    background: #494949;
+}
+100% {
+    background: #313131;
+}
+}
+.point:active {
+    animation: point 0.2s linear;
+}
+@keyframes point {
+0% {
+    background: #313131;
+}
+50% {
+    background: #494949;
+}
+100% {
+    background: #313131;
+}
+}
