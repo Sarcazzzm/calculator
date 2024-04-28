@@ -1,15 +1,11 @@
 'use strict'
 
-// Минусы что обнаружил: бесконечный ввод нулей, точки можно ставить в текущем числе но не подряд, не считает 0n , не отображает умножение :)
+// Динамическая типизация
 
-// выбор степени округления (((после интерфейса)))
-// в инструкции указать как убрать последний символ (дбл клик)
-// сделать записную книжку
-// историю вычислений
-
-// разобраться с нулем
-// разобраться с точками
-// разобраться с числами которые 0n
+// бесконечный ввод нулей
+// бесконечный ввод точек но не подряд
+// пофиксить числа по типу 0n...
+// пофиксить умножение
 
 const input = document.querySelector('.display')                        // вывод
 const reset = document.querySelector('.reset')                          // сброс
@@ -20,8 +16,30 @@ const zero = document.querySelector('.zero')                            // но�
 const point = document.querySelector('.point')                          // точка
 const pm = document.querySelector('.pm')                                // добавление минуса перед числом
 const prc = document.querySelector('.prc')                              // процент (деление на 100)
- 
+const btnNotes = document.querySelector('.clear__notes')                // кнопка очистки записей
+const btnHist = document.querySelector('.clear__history')               // истории
+const notes = document.querySelector('.for__notes')
+const history = document.querySelector('.for__history')
+
 let result = '';                                                        // результат
+let round = 0
+
+function updateValue(value) {                                           // брать текущее значение инпута
+    round = +value + 1
+    return round
+}
+
+btnNotes.addEventListener('click', function() {                         // очистка записей
+    notes.value = ''
+})
+btnHist.addEventListener('click', function() {                         // очистка истории
+    history.value = ''
+})
+
+document.addEventListener('DOMContentLoaded', function() {              // инициализация значения round после загрузки страницы
+    round = updateValue(document.querySelector('.round').value);
+});
+
 
 pm.addEventListener('click', function() {                               // знак +-
     result = result.toString()                                          // чтобы конечный результат который числового типа переводился в строку
@@ -52,7 +70,8 @@ prc.addEventListener('click', function() {                              // пр�
     if (result.length > 0 && result.indexOf('+') == '-1' && result.indexOf('-') == '-1' && result.indexOf('*') == '-1' && result.indexOf('/') == '-1' && result.charAt(result.length - 1) !== '.') {   
         result = result/100
         input.value = result
-        result = result.toString()                                    
+        result = result.toString()      
+        history.value += `${result}%; `
     } else {
         setTimeout(() => {
             input.value = result
@@ -64,7 +83,7 @@ prc.addEventListener('click', function() {                              // пр�
 reset.addEventListener('click', function() {                            // кнопка сброса
     input.value = ''                                                    // обнуление инпута
     result = ''                                                         // обнуление результата
-    input.style.direction = '';
+    input.style.direction = '';                                         // сбрасываем направление текста
 })
 
 input.addEventListener('dblclick', function() {                         // убрать значение при двойном нажатии на поле
@@ -79,51 +98,47 @@ number.forEach(function(btn) {                                          // вы�
         input.value += btnContent                                       // добавляем содержимое в инпут
         result += btnContent                                            // добавляем содержимое в результат
         if (input.value.length > 7) {                                   // проверка на кол-во символов чтобы следить за ходом расчета
-            input.style.direction = 'rtl';
+            input.style.direction = 'rtl';                              // меняем направление текста
         } else {
-            input.style.direction = '';
+            input.style.direction = '';                                 // прежнее направление текста
         }
     })
 })
 
 operation.forEach(function(btn) {                                       // вывод контента на дисплей
     btn.addEventListener('click', function() {
-        if (result.length !== 0 && result.charAt(result.length - 1) !== '+' && result.charAt(result.length - 1) !== '-' && result.charAt(result.length - 1) !== '*' && result.charAt(result.length - 1) !== '/' && result.charAt(result.length - 1) !== '.') {
+        if (result.length !== 0 && result.charAt(result.length - 1) !== '+' && result.charAt(result.length - 1) !== '-' && result.charAt(result.length - 1) !== '*' && result.charAt(result.length - 1) !== '/' && result.charAt(result.length - 1) !== '.') {     // условие на операции
             let btnContent = btn.textContent;                         
             input.value += btnContent                               
             result += btnContent
         }
     })
 })
-// когда первый элемент не ноль, если поле пустое, или последнее цифра, знак или точка то могу, или предпоследнее цифра а последнее ноль
+
 zero.addEventListener('click', function() {
     input.value += zero.textContent
     result += zero.textContent
 });
 
 point.addEventListener('click', function() {                            // точка
-    if (result.length !== 0 && result.charAt(result.length - 1) !== '+' && result.charAt(result.length - 1) !== '-' && result.charAt(result.length - 1) !== '*' && result.charAt(result.length - 1) !== '/' && result.charAt(result.length - 1) !== '.') {
+    if (result.length !== 0 && result.charAt(result.length - 1) !== '+' && result.charAt(result.length - 1) !== '-' && result.charAt(result.length - 1) !== '*' && result.charAt(result.length - 1) !== '/' && result.charAt(result.length - 1) !== '.') {           // условие ввода точки 
         input.value += point.textContent
         result += point.textContent
     }
 })
 
 equally.addEventListener('click', function() {                          // равно
-    if (result.charAt(result.length - 1) == '/' || result.charAt(result.length - 1) == '*' || result.charAt(result.length - 1) == '+' || result.charAt(result.length - 1) == '-' || result.charAt(result.length - 1) == '.') {                   // условие чтобы последним символом не были знаки
-        setTimeout(() => {
-            input.value = ''
-            result = ''
-        }, 1000);
-        input.value = 'Ошибка'                                          // исчезнет через секунду
-    } else {
+    if (result.length !== 0 && result.charAt(0) !== '-' && (result.indexOf('+') !== -1 || result.indexOf('-') !== -1 || result.indexOf('*') !== -1 || result.indexOf('/') !== -1 ) && (result.charAt(result.length - 1) !== '/' && result.charAt(result.length - 1) !== '*' && result.charAt(result.length - 1) !== '+' && result.charAt(result.length - 1) !== '-' && result.charAt(result.length - 1) !== '.')) {                                             // условие ввода знака "равно"
         let keke = eval(result)                                         // переводим строку в числовой тип
         if (Math.floor(keke) !== keke) {                                // условие округления
-            keke = keke.toFixed(3)                                      // округляем
+            keke = keke.toFixed(round)                                  // округляем
             input.value = keke                                          // вывод
-            result = keke.toString()
+            result = keke.toString()                                    // перевод конечного результата в строчный тип
+            history.value += `${keke}; `                                // запись в историю
         } else {
             input.value = keke                                          // вывод
-            result = keke.toString()
+            result = keke.toString()                                    // перевод конечного результата в строчный тип
+            history.value += `${keke}; `                                // // запись в историю
         }
-    }    
+    }  
 })

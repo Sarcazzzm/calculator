@@ -7,42 +7,79 @@
     <title>Calculator</title>
 </head>
 <body>
-    <div class="phone">
-        <div class="solid"></div>
-        <div class="rectangle"></div>
-        <input type="text" class="display" readonly >
-        <div class="wrapper">
-            <div class="wrapper__btn">
-                <button class="btn reset">C</button>
-                <button class="btn pm">+/-</button>
-                <button class="btn prc">%</button>
-                <button class="btn operation">/</button>
-            </div>
-            <div class="wrapper__btn">
-                <button class="btn number">7</button>
-                <button class="btn number">8</button>
-                <button class="btn number">9</button>
-                <button class="btn operation">*</button>
-            </div>
-            <div class="wrapper__btn">
-                <button class="btn number">4</button>
-                <button class="btn number">5</button>
-                <button class="btn number">6</button>
-                <button class="btn operation">-</button>
-            </div>
-            <div class="wrapper__btn">
-                <button class="btn number">1</button>
-                <button class="btn number">2</button>
-                <button class="btn number">3</button>
-                <button class="btn operation">+</button>
-            </div>
-            <div class="wrapper__btn">
-                <button class="btn zero">0</button>
-                <button class="btn point">.</button>
-                <button class="btn equally">=</button>
+    <div class="container">
+
+        <div class="wrapper__text">
+            <h1>Calculator Type Apple</h1>
+            <p>This calculator is a copy of the calculator from the iPhone 13 mini version. It has some bugs, but it fulfills its function to the fullest. To change the degree of rounding, drag the slider to the desired side. Double-click on the output screen to delete the last value. The field on the left is for notes. The field on the right shows the history of the last calculations.</p>
+            <p>The bugs I found are:</p>
+            <ol>
+                <li>Infinite number of dots (but not in a row);</li>
+                <li>Infinite zeros (e.g. writing the number 0000.01);</li>
+                <li>Incorrect display of the calculation process during any operations, especially multiplication.</li>
+            </ol> 
+            <p>Despite these bugs, the calculation is correct.</p>
+            <div class="notes__wrapper">
+                <button class=" btn__cl clear__notes">C<br>l<br>e<br>a<br>r</button>
+                <textarea class="area for__notes" placeholder="for notes..." maxlength="300"></textarea>
+                <textarea class="area for__history" placeholder="...for history" maxlength="330" readonly></textarea>
+                <button class="btn__cl clear__history">C<br>l<br>e<br>a<br>r</button>
             </div>
         </div>
+
         <div class="line"></div>
+
+        <div class="wrapper__calc">
+
+            <div class="phone">
+                <div class="solid"></div>
+                <div class="rectangle"></div>
+                <input type="text" class="display" readonly >
+                <div class="wrapper__btns">
+                    <div class="wrapper__btn">
+                        <button class="btn reset">C</button>
+                        <button class="btn pm">+/-</button>
+                        <button class="btn prc">%</button>
+                        <button class="btn operation">/</button>
+                    </div>
+                    <div class="wrapper__btn">
+                        <button class="btn number">7</button>
+                        <button class="btn number">8</button>
+                        <button class="btn number">9</button>
+                        <button class="btn operation">*</button>
+                    </div>
+                    <div class="wrapper__btn">
+                        <button class="btn number">4</button>
+                        <button class="btn number">5</button>
+                        <button class="btn number">6</button>
+                        <button class="btn operation">-</button>
+                    </div>
+                    <div class="wrapper__btn">
+                        <button class="btn number">1</button>
+                        <button class="btn number">2</button>
+                        <button class="btn number">3</button>
+                        <button class="btn operation">+</button>
+                    </div>
+                    <div class="wrapper__btn">
+                        <button class="btn zero">0</button>
+                        <button class="btn point">.</button>
+                        <button class="btn equally">=</button>
+                    </div>
+                </div>
+                <div class="home"></div>
+            </div>
+
+            <div class="round__wrapper">
+                <input type="range" class="round" min="0" max="2" value="0" step="1" onchange="updateValue(this.value)"> <!-- при изменении значения, оно передается в функцию -->
+                <div class="round__descr">
+                    <p class="round__descr__value">0.1</p>
+                    <p class="round__descr__value">0.01</p>
+                    <p class="round__descr__value">0.001</p>
+                </div>
+            </div>
+            
+        </div>
+
     </div>
     <script src="script.js"></script>
 </body>

@@ -2,25 +2,104 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: SF;
     user-select: none;
-    
+    font-family: SF;
 }
+
 @font-face {
     font-family: SF;
     src: url(SFUIDisplay-Regular.woff2) ;
     font-display: swap;
 }
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
     background: #0c0c0c;
+}
+.container {
+    display: flex;
+    justify-content: space-around;
+    position: relative;
+    margin: 0 auto;
+    width: 1300px;
     height: 100vh;
+}
+.wrapper__text {
+    margin-top: 30px;
+    width: 50%;
+    color: #c1c1c1;
+    text-align: justify;
+}
+.wrapper__text h1 {
+    text-align: center;
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+}
+.wrapper__text p {
+    text-indent: 40px;
+    margin-top: 15px;
+    letter-spacing: 2px;
+}
+.wrapper__text ol {
+    margin-top: 15px;
+    letter-spacing: 2px;
+    margin-left: 42px;
+}
+.notes__wrapper {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+.area {
+    resize: none;
+    padding: 13px;
+    background: rgb(23, 23, 23);
+    outline: none;
+    border: none;
+    color: #acacac;
+}
+.for__notes {
+    border-radius: 0 20px 20px 0;
+    width: 280px;
+    height: 220px;
+}
+.for__history {
+    width: 280px;
+    height: 220px;
+    border-radius: 20px 0 0 20px;
+    text-align: right;
+    cursor: default;
+}
+.clear__notes {
+    border-radius: 20px 0 0 20px;
+}
+.clear__history {
+    border-radius: 0 20px 20px 0
+}
+.btn__cl {
+    height: 220px;
+    width: 30px;
+    background:rgb(23, 23, 23);
+    border: none;
+    color: #c3c3c3;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    cursor: pointer;
+}
+.line {
+    display: flex;
+    align-items:center;
+    width: 2px;
+    height: 100vh;
+    background: #4b4b4b;
+    box-shadow: 0px 5px 55px 0px rgba(251, 251, 251, 0.9);
+}
+.wrapper__calc {
+    display: flex;
+    flex-direction: column;
 }
 .phone {
     position: relative;
+    margin-top: 30px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -29,7 +108,7 @@ body {
     border: 2px solid #fff6be;
     background: #000000;
     border-radius: 30px;
-    box-shadow: 1px 7px 55px 0px rgba(255, 166, 0, 0.4);
+    box-shadow: 1px 7px 25px 0px rgba(162, 0, 255, 0.4);
 }
 .solid {
     position: absolute;
@@ -48,6 +127,7 @@ body {
     border-radius: 0 0 15px 15px;
 }
 .display {
+    font-family: SF;
     display: flex;
     height: 60px;
     width: 220px;
@@ -61,7 +141,7 @@ body {
     outline: none;
     text-align: right;
 }
-.wrapper {
+.wrapper__btns {
     margin-top: 5px;
     margin-bottom: 25px;
 }
@@ -102,7 +182,7 @@ body {
     background: #F69906;
     font-weight: bold;
 }
-.line {
+.home {
     display: block;
     width: 80px;
     height: 3.5px;
@@ -110,12 +190,46 @@ body {
     border-radius: 10px;
     margin-bottom: 3px;
 }
-.tagname {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
-    color: #3c3c3c;
+.round__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+}
+.round {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: 40px;
+    width: 150px;
+    height: 7px;
+    background: #000;
+    border-radius: 10px;
+    outline: none;
+}
+.round::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #F69906; 
+    cursor: grab;
+  }
+.round__descr {
+    display: flex;
+    margin-top: 10px;
+}
+.round__descr__value {
+    color:#F69906;
     font-size: 15px;
+}
+.round__descr__value:nth-child(1) {
+    transform: translateX(-40px);
+}
+.round__descr__value:nth-child(2) {
+    transform: translateX(12px);
+}
+.round__descr__value:nth-child(3) {
+    transform: translateX(50px);
 }
 
 .number:active {
@@ -231,4 +345,18 @@ body {
 100% {
     background: #313131;
 }
+}
+.btn__cl:active {
+    animation: btn__cl 0.2s linear;
+}
+@keyframes btn__cl {
+    0% {
+        background:rgb(23, 23, 23);
+    }
+    50% {
+        background:rgb(45, 45, 45);
+    }
+    100% {
+        background:rgb(23, 23, 23);
+    }
 }
