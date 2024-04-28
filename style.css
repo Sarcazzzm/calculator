@@ -17,13 +17,13 @@ body {
 .container {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     position: relative;
     margin: 0 auto;
     width: 1300px;
     height: 100vh;
 }
 .wrapper__text {
-    margin-top: 30px;
     width: 50%;
     color: #c1c1c1;
     text-align: justify;
@@ -99,7 +99,6 @@ body {
 }
 .phone {
     position: relative;
-    margin-top: 30px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -208,28 +207,28 @@ body {
 .round::-webkit-slider-thumb {
     -webkit-appearance: none; 
     appearance: none;
-    width: 15px;
-    height: 15px;
+    width: 13px;
+    height: 13px;
     border-radius: 50%;
     background: #F69906; 
     cursor: grab;
   }
 .round__descr {
     display: flex;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 .round__descr__value {
     color:#F69906;
-    font-size: 15px;
+    font-size: 14px;
 }
 .round__descr__value:nth-child(1) {
-    transform: translateX(-40px);
+    transform: translateX(-46px);
 }
 .round__descr__value:nth-child(2) {
-    transform: translateX(12px);
+    transform: translateX(8px);
 }
 .round__descr__value:nth-child(3) {
-    transform: translateX(50px);
+    transform: translateX(54px);
 }
 
 .number:active {
